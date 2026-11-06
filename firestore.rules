@@ -1,0 +1,32 @@
+rules_version = '2';
+// Security rules for LocalServe. Paste this into:
+// Firebase Console → Firestore Database → Rules → Publish
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Anyone can view providers and register a new one.
+    // Only the rating fields can be changed later (when a review is added).
+    match /providers/{id} {
+      allow read: if true;
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.name.size() <= 80
+                    && request.resource.data.description.size() <= 600
+                    && request.resource.data.ratingSum == 0
+                    && request.resource.data.ratingCount == 0;
+      allow update: if request.resource.data.diff(resource.data).affectedKeys()
+                         .hasOnly(['ratingSum', 'ratingCount'])
+                    && request.resource.data.ratingCount == resource.data.ratingCount + 1;
+      allow delete: if false;
+    }
+
+    // Anyone can read reviews and add one (rating 1–5).
+    match /reviews/{id} {
+      allow read: if true;
+      allow create: if request.resource.data.rating is int
+                    && request.resource.data.rating >= 1
+                    && request.resource.data.rating <= 5
+                    && request.resource.data.comment.size() <= 500;
+      allow update, delete: if false;
+    }
+  }
+}

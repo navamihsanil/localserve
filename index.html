@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalServe – Find Local Services</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="logo">🔧 LocalServe</a>
+    <nav>
+      <a href="index.html" class="active">Find Services</a>
+      <a href="register.html" class="btn btn-small">Register as Provider</a>
+    </nav>
+  </header>
+
+  <div id="demo-banner" class="demo-banner hidden">
+    Demo mode: data is saved only in this browser. Add your Firebase keys in <code>js/firebase-config.js</code> to use the real database.
+  </div>
+
+  <section class="hero">
+    <h1>Find trusted local services near you</h1>
+    <p>Plumbers, electricians, tutors and more — all in one place.</p>
+
+    <form id="search-form" class="search-box">
+      <input type="text" id="q" placeholder="What do you need? e.g. tap repair">
+      <select id="category">
+        <option value="">All categories</option>
+      </select>
+      <input type="text" id="city" placeholder="City or area">
+      <button type="submit" class="btn">Search</button>
+    </form>
+  </section>
+
+  <main class="container">
+    <div id="chips" class="chips"></div>
+
+    <h2 id="results-title">All service providers</h2>
+    <div id="results" class="grid">
+      <p class="muted">Loading…</p>
+    </div>
+  </main>
+
+  <footer class="footer">© LocalServe – a simple local service finder</footer>
+
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>

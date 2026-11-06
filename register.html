@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register as Provider – LocalServe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="logo">🔧 LocalServe</a>
+    <nav>
+      <a href="index.html">Find Services</a>
+      <a href="register.html" class="btn btn-small active">Register as Provider</a>
+    </nav>
+  </header>
+
+  <div id="demo-banner" class="demo-banner hidden">
+    Demo mode: data is saved only in this browser.
+  </div>
+
+  <main class="container narrow">
+    <div class="card">
+      <h1>Register your service</h1>
+      <p class="muted">List your business so local customers can find you.</p>
+
+      <form id="register-form" class="form">
+        <label>Full name / Business name *
+          <input type="text" id="name" required maxlength="80">
+        </label>
+
+        <label>Service category *
+          <select id="category" required>
+            <option value="">Select a category</option>
+          </select>
+        </label>
+
+        <div class="row">
+          <label>Phone number *
+            <input type="tel" id="phone" required pattern="[0-9+ ]{10,15}" placeholder="e.g. 9876543210">
+          </label>
+          <label>WhatsApp number
+            <input type="tel" id="whatsapp" pattern="[0-9+ ]{10,15}" placeholder="Leave empty if same">
+          </label>
+        </div>
+
+        <div class="row">
+          <label>City *
+            <input type="text" id="city" required maxlength="50" placeholder="e.g. Mangalore">
+          </label>
+          <label>Area / Locality *
+            <input type="text" id="area" required maxlength="80" placeholder="e.g. Kankanady">
+          </label>
+        </div>
+
+        <div class="row">
+          <label>Years of experience
+            <input type="number" id="experience" min="0" max="60" value="0">
+          </label>
+          <label>Starting price (₹)
+            <input type="number" id="price" min="0" placeholder="e.g. 300">
+          </label>
+        </div>
+
+        <label>About your service *
+          <textarea id="description" rows="4" required maxlength="600" placeholder="What services do you offer? Working hours?"></textarea>
+        </label>
+
+        <button type="submit" class="btn">Register</button>
+        <p id="msg" class="msg"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">© LocalServe – a simple local service finder</footer>
+
+  <script type="module" src="js/register.js"></script>
+</body>
+</html>
